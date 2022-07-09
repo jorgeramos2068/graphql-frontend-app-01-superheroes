@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# React/GraphQL App - Superheroes Frontend
+
+React web application that implements GraphQL Apollo Client to manage superheroes data.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
