@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
 import { Superheroes } from './components/Superheroes';
+import { Search } from './components/Search';
 import logo from './logo.svg';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
           {error && <div>There was an error while loading data</div>}
           {data && <Superheroes superheroes={data.allSuperheroes} />}
         </div>
+        <Search />
       </header>
     </div>
   );
