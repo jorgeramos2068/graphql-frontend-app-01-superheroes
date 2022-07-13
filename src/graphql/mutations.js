@@ -18,3 +18,21 @@ export const ADD_SUPERHERO = gql`
     }
   }
 `;
+
+export const EDIT_SUPERHERO = gql`
+  mutation editSuperhero(
+    $id: ID!
+    $name: String!
+    $phone: String
+    $street: String!
+    $city: String!
+  ) {
+    id
+    name
+    phone
+    address {
+      street
+      city
+    }
+  }
+`;
