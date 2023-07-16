@@ -1,28 +1,30 @@
-import { useEffect } from 'react';
+import { gql, useQuery } from '@apollo/client';
+
+import { Superheroes } from './components/Superheroes';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  useEffect(() => {
-    fetch('http://localhost:4000', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query: `query {allSuperheroes{id, name, phone}}`,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res))
-      .catch(err => console.error(err));
-  }, []);
+  const ALL_SUPERHEROES = gql`
+    query {
+      allSuperheroes {
+        id
+        name
+        phone
+      }
+    }
+  `;
+  const { data, error, loading } = useQuery(ALL_SUPERHEROES);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          {loading && <div>Loading GraphQL data</div>}
+          {error && <div>There was an error while loading data</div>}
+          {data && <Superheroes superheroes={data.allSuperheroes} />}
+        </div>
       </header>
     </div>
   );
