@@ -1,21 +1,8 @@
 import { useState } from 'react';
-import { gql, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
+import { FIND_SUPERHERO } from '../graphql';
 
 export const Search = () => {
-  const FIND_SUPERHERO = gql`
-    query findSuperhero($idToSearch: ID!) {
-      findSuperhero(id: $idToSearch) {
-        id
-        name
-        phone
-        address {
-          street
-          city
-        }
-      }
-    }
-  `;
-
   const [id, setId] = useState('');
   const [getSuperhero, result] = useLazyQuery(FIND_SUPERHERO);
   const { data, error, loading } = result;
