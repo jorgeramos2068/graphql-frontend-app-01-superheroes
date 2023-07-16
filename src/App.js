@@ -8,7 +8,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const { data, error, loading } = useQuery(ALL_SUPERHEROES);
+  const { data, error, loading, refetch } = useQuery(ALL_SUPERHEROES);
 
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
         </div>
         <Search />
         <hr />
-        <AddSuperhero />
+        <AddSuperhero refetch={refetch} />
       </header>
     </div>
   );

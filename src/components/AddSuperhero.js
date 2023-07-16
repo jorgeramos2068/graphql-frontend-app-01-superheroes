@@ -3,13 +3,13 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_SUPERHERO } from '../graphql';
 
-export const AddSuperhero = () => {
+export const AddSuperhero = ({ refetch = Function.prototype }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
 
-  const [createSuperhero, result] = useMutation(ADD_SUPERHERO);
+  const [createSuperhero] = useMutation(ADD_SUPERHERO);
 
   const handleNameChange = e => {
     setName(e.target.value);
@@ -30,6 +30,7 @@ export const AddSuperhero = () => {
   const handleSubmit = e => {
     e.preventDefault();
     createSuperhero({ variables: { name, phone, street, city } });
+    refetch();
     setName('');
     setPhone('');
     setStreet('');
