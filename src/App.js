@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { Superheroes } from './components/Superheroes';
 import { Search } from './components/Search';
+import { AddSuperhero } from './components/AddSuperhero';
 import { ALL_SUPERHEROES } from './graphql';
 import logo from './logo.svg';
 import './App.css';
@@ -19,6 +20,8 @@ function App() {
           {data && <Superheroes superheroes={data.allSuperheroes} />}
         </div>
         <Search />
+        <hr />
+        <AddSuperhero />
       </header>
     </div>
   );

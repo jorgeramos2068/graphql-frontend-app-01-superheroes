@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
+
 import { FIND_SUPERHERO } from '../graphql';
 
 export const Search = () => {
@@ -24,7 +25,12 @@ export const Search = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <p>Search by id</p>
-        <input name="id" autoComplete="off" onChange={handleInputChange} />
+        <input
+          name="id"
+          type="text"
+          autoComplete="off"
+          onChange={handleInputChange}
+        />
         <button type="submit">Submit</button>
       </form>
       <div>
